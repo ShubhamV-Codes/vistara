@@ -1,37 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WanderLust</title>
-  </head>
-  <body>
-    <h3>Create a New Listing</h3>
-    <form method="POST" action="/listings">
-      <input name="listing[title]" placeholder="enter title" type="text" />
-      <br /><br />
-      <textarea
-        name="listing[description]"
-        placeholder="enter description"
-      ></textarea>
-      <br /><br />
-      <input
-        name="listing[image]"
-        placeholder="enter image URL/Link"
-        type="text"
-      />
-      <br /><br />
-      <input name="listing[price]" placeholder="enter price" type="number" />
-      <br /><br />
-      <input name="listing[country]" placeholder="enter country" type="text" />
-      <br /><br />
-      <input
-        name="listing[location]"
-        placeholder="enter location"
-        type="text"
-      />
-      <br /><br />
-      <button>Add</button>
-    </form>
-  </body>
-</html>
+<% layout("/layouts/boilerplate") %>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br /> <br />
+      <h3 class = new-heading>Create a New Listing</h3>
+      <form method="POST" action="/listings">
+        <div class="mb-3">
+          <label for="title" class="form-label ms-2"> Title</label>
+          <input id="title" name="listing[title]" placeholder="Enter title" type="text" class="form-control" />
+
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label ms-2">Description</label>
+          <input id="description" placeholder ="Write a short description about the listing" style="height:70px" name="listing[description]" class="form-control" />
+
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label ms-2">Image</label>
+          <input id="image" name="listing[image]" placeholder="Enter Image URL" class="form-control" />
+
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-5">
+            <label for="price" class="form-label ms-2">Price</label>
+            <input id="price" name="listing[price]" placeholder="Enter Price" class="form-control" />
+
+          </div>
+
+          <div class="mb-3 col-md-7">
+            <label for="country" class="form-label ms-2">Country</label>
+            <input id="country" name="listing[country]" placeholder="Enter Country" class="form-control" />
+
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input id="location" name="listing[location]" placeholder="Enter Location" class="form-control" />
+
+        </div>
+
+        <!-- <button class="btn btn-dark add-btn" >Add </button>-->
+        <div class="d-flex justify-content-center my-3">
+          <button class="btn btn-danger">Add Listing</button>
+        </div>
+
+        <br /> <br />
+      </form>
+    </div>
+  </div>

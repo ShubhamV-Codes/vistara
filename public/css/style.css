@@ -1,0 +1,142 @@
+body{
+
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height:100vh;
+
+
+}
+.container{
+   flex:1;
+}
+
+.navbar{
+   height:5rem;
+   background-color: white;
+}
+
+/* Styling Compass Icon */
+.fa-compass{
+   color:#fe424d;
+   font-size:2rem;
+}
+.nav-link{
+   color:#222222 !important;
+}
+.f-info-links a{
+   text-decoration: none;
+   color:#222222;
+}
+.f-info-links:hover{
+   text-decoration: underline;
+   
+}
+.f-info-links,.f-info-socials,.f-info-brand{
+   width:100%;
+   display:flex;
+   justify-content:center;
+   align-items:center; 
+
+}
+
+.f-info-socials i{
+   font-size:1.25rem;   
+   margin-right:1 rem;
+}
+
+.f-info{
+   text-align: center;
+   height:8rem;
+   background-color: #ebebeb;
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:center;
+   align-items:space-evenly; 
+}
+/* Cards */
+.card{
+   border:none !important;
+   margin-bottom: 2rem;
+
+}
+.card-img-top{
+   border-radius: 1rem !important;
+   width:100% !important;
+   object-fit: cover !important;
+}
+.card-body{
+   padding: 0 !important;
+
+}
+.card-text p{
+   font-weight:400px !important;
+}
+.listing-links{
+   text-decoration: none;
+}
+/* Cards Effect */
+.card-img-overlay{
+   opacity: 0;
+}
+.card-img-overlay:hover{
+   opacity: 0.15;
+   background-color: white;
+}
+.new-heading {
+  text-align: center;        
+  font-size: 2rem;             
+  font-weight: 600;         
+  margin: 30px 0 20px 0;       
+  color: #e73b47;              
+  letter-spacing: 1px;         
+}
+.edit-heading  {
+  text-align: center !important;
+  color: #fe424d !important;
+}
+.index-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center !important;
+  color: #fe424d !important;
+  margin:2rem;
+}
+.listing-title {
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+  color: #333 !important;
+  text-align: center !important;
+}
+
+.listing-price {
+  text-align: center !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: #fe424d !important;  /* Matches your button color */
+}
+.show-img{
+   height:30vh;
+}
+.btns{
+   display:flex;
+}
+.show-heading{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center !important;
+  color: #fe424d !important;
+  margin-top:3rem;
+  margin-bottom:0.75rem;
+}
+.show-main{
+   flex:1;
+}
+.showbtns{
+   margin-bottom:8rem;
+}
+.editbtns{
+   margin-bottom:8rem;
+}
