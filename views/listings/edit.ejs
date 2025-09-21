@@ -2,36 +2,49 @@
   <div class="row mt-4">
     <div class="col-8 offset-2">
       <h3 class="edit-heading">Edit your Listing</h3>
-      <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+      <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="row g-3 needs-validation">
         <div class="mb-3">
           <label for="title" class="form-label ms-2">Title</label>
-          <input id="title" name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" />
+          <input id="title" name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required />
+          <!-- <div class="valid-feedback">  New Title Looks Good </div> -->
+          <div class="invalid-feedback"> Title Must be Defined </div>
         </div>
 
         <div class="mb-3">
           <label for="description" class="form-label ms-2">Description</label>
           <textarea id="description" name="listing[description]" class="form-control"><%= listing.description %></textarea>
+          <!-- <div class="valid-feedback"> Description Edited </div> -->
+          <div class="invalid-feedback"> Description Can't be Empty </div>
         </div>
 
         <div class="mb-3">
           <label for="image" class="form-label ms-2">Image</label>
-          <input id="image" name="listing[image][url]" value="<%= listing.image.url %>"  type="text" class="form-control" />
+          <input id="image" name="listing[image][url]" value="<%= listing.image.url %>"  type="text" class="form-control" required/>
+          <!-- <div class="valid-feedback"> Image Updated </div> -->
+          <div class="invalid-feedback"> Provide Image URL </div>
         </div>
+
         <div class="row">
           <div class="mb-3 col-md-5">
             <label for="price" class="form-label ms-2">Price</label>
-            <input id="price" name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" />
-          </div>
-          <div class="mb-3 col-md-7">
-            <label for="country" class="form-label ms-2">Country</label>
-            <input id="country" name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" />
+            <input id="price" name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required />
+            <!-- <div class="valid-feedback"> Price Updated </div> -->
+            <div class="invalid-feedback"> Price Must be Valid </div>
           </div>
 
+          <div class="mb-3 col-md-7">
+            <label for="country" class="form-label ms-2">Country</label>
+            <input id="country" name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required/>
+            <!-- <div class="valid-feedback"> Country Updated</div> -->
+            <div class="invalid-feedback"> Country can't be Empty </div>
+          </div>
         </div>
 
         <div class="mb-3 ">
           <label for="location" class="form-label">Location</label>
-          <input id="location" name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" />
+          <input id="location" name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required/>
+          <!-- <div class="valid-feedback"> Location Updated</div> -->
+            <div class="invalid-feedback"> Location Cant be Empty  </div>
         </div>
         <div class="d-flex justify-content-center my-3">
           <button class="btn btn-success editbtns">Edit</button>
@@ -39,3 +52,5 @@
       </form>
     </div>
   </div>
+
+  <script src="/js/script.js"></script>
