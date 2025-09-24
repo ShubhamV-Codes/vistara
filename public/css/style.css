@@ -4,6 +4,7 @@ body{
   display: flex;
   flex-direction: column;
   min-height:100vh;
+  
 
 
 }
@@ -43,6 +44,7 @@ body{
 .f-info-socials i{
    font-size:1.25rem;   
    margin-right:1 rem;
+  
 }
 
 .f-info {
@@ -56,14 +58,14 @@ body{
 }
 
 /* Cards */
-.card{
+.listing-card{
    border:none !important;
    margin-bottom: 2rem;
 
 }
 .card-img-top{
    border-radius: 1rem !important;
-   width:100% !important;
+   width:99% !important;
    object-fit: cover !important;
 }
 .card-body{
@@ -141,3 +143,139 @@ body{
 .editbtns{
    margin-bottom:8rem;
 }
+
+/* Styling for comment section for reviews */
+
+/* Review Form Container */
+.col-8 {
+  background: #f9f9f9;        /* subtle light background */
+  padding: 2rem;              /* space inside */
+  border-radius: 12px;        /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* soft shadow */
+}
+
+/* Form Heading */
+.col-8 h4 {
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Labels */
+.col-8 label {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Form Inputs & Textarea */
+.col-8 input.form-range {
+  accent-color: #198754;  /* green slider color */
+  margin-top: 0.5rem;
+}
+
+.col-8 textarea.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  resize: vertical;
+}
+
+/* Submit Button */
+.col-8 button.btn-outline-dark {
+  display: block;
+  margin: 1rem auto 0 auto; /* center button */
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.col-8 button.btn-outline-dark:hover {
+  background-color: #343a40;
+  color: #fff;
+  border-color: #343a40;
+  transform: translateY(-2px);
+}
+
+
+/* Styling for reviews */
+
+/* Review Section Container */
+.reviews-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+/* Heading */
+.reviews-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-left: 4px solid #0d6efd;
+  padding-left: 10px;
+  color: #333;
+}
+
+/* Reviews List */
+.reviews-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Individual Review Card */
+.reviews-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.reviews-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  border-left: 4px solid #0d6efd;
+  padding-left: 10px;
+}
+
+.reviews-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.review-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+}
+
+.review-author {
+  font-weight: 500;
+  color: #0d6efd;
+}
+
+.review-rating {
+  font-weight: 500;
+  color: #198754;
+}
+
+.review-text {
+  color: #555;
+}
+
+.review-separator {
+  border-top: 1px solid #dee2e6;
+}
+
+.review-delete-btn {
+  border-radius: 5px;
+  align-content: center;
+}
+
+
