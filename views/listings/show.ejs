@@ -41,14 +41,14 @@
     <div class="btns d-flex justify-content-center gap-3 mt-3 showbtns">
       <a href="/listings/<%= listing._id %>/edit" class="btn btn-warning px-4">Edit</a>
 
-      <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+      <form method="POST" action="/listings/<%= listing._id%>?_method=DELETE">
         <button class="btn btn-danger px-4">Delete</button>
       </form>
     </div>
     <hr>
     <div class=" col-8 mb-3 mx-auto">
       <h4 class="reviews-heading text-start">Leave a Review</h4>
-      <form action="/listings/<%=listing.id%>/reviews" method="POST" novalidate class="needs-validation">
+      <form action="/listings/<%= listing._id%>/reviews" method="POST" novalidate class="needs-validation">
         <div class="mb-3 mt-3">
           <label for="rating" class="form-label d-block">Rating</label>
           <div class="text-start"><input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range w-25">
