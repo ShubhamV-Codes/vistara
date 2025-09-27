@@ -1,37 +1,54 @@
 const express= require("express");
 const app = express();
 const users=require("./routes/user.js");
-const posts=require("./routes/post.js")
-const cookieParser = require("cookie-parser");
+const posts=require("./routes/post.js");
+const session = require("express-session");
+const flash=require("connect-flash");
+const path=require("path");
 
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
 
-app.use(cookieParser("secretcode"));
+const sessionOptions={
+    secret:"mysupersecretstring",
+    resave:false,
+    saveUninitialized:true
+};
 
-app.get("/getSignedCookie",(req,res)=>{
-    res.cookie("color","red",{signed:true});
-    res.send("DONE");
-});
-app.get("/verify",(req,res)=>{
-    res.send(req.signedCookies);
-    res.send("verified");
-});
-
-app.get("/getcookies", (req,res)=>{
-    res.cookie("Cookie-1","shubham");
-    res.cookie("Cookie-2","Vishwakarma");
-    res.send("Cookies has been sent");
-});
-app.get("/greet",(req,res)=>{
-    let {name="anonymous"}=req.cookies;
-    res.send(`Hi,${name}`);
+app.use(session(sessionOptions));
+app.use(flash());
+app.use((req,res,next)=>{
+    res.locals.success=req.flash("success");
+    res.locals.failure=req.flash("failure"); 
+    next();   
 })
-app.get("/",(req,res)=>{
-    console.dir(req.cookies);
-    res.send("Hi,I am Root!");
+
+app.get("/register",(req,res)=>{
+    let {name="anonymous"}=req.query;
+    req.session.name= name;
+
+    if(name==="anonymous"){
+       req.flash("failure" , "Some Error Occured");
+    }else{
+      req.flash("success" , "User Registered SuccessFully");
+    }  
+    res.redirect("/hello");
 });
 
-app.use("/users",users);
-app.use("/posts",posts);
+app.get("/hello",(req,res)=>{
+    res.render("page.ejs",{name: req.session.name });
+});
+// app.get("/reqCount",(req,res)=>{
+//     if(req.session){
+//         req.session.count++;
+//     }else{
+//         req.session.count = 1;
+//     }
+//     res.send(`You sent request ${req.session.count} times`);
+// });
+app.get("/test",(req,res)=>{
+    res.send("Test Successful");
+});
 
 app.listen(3000,()=>{
     console.log("Server is Listening to 3000");

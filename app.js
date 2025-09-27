@@ -10,6 +10,8 @@ const wrapAsync =require("./utils/wrapAsync.js");
 const ExpressError =require("./utils/ExpressError.js");
 const {listingSchema,reviewSchema}=require("./schema.js");
 const Review = require("./models/review.js"); 
+const session=require("express-session");
+const flash = require("connect-flash");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -34,11 +36,29 @@ app.use(methodOverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
+const sessionOptions = {
+    secret:"mysupersecretcode",
+    resave:false,
+    saveUninitialized:true,
+    cookie:{
+        expires:Date.now()+1000*60*60*24*7 ,   //1000 because of there is milisecond unit 
+        maxAge:1000*60*60*24*7,
+        httpOnly: true
+    }
+};
 
 app.get("/",(req,res)=>{
     res.send("Hello World");
 });
 
+app.use(session(sessionOptions));  // Always put flash and session before iinitializing routes
+app.use(flash());
+
+app.use((req,res,next)=>{
+   res.locals.success = req.flash("success");
+   res.locals.error = req.flash("error");
+   next();
+})
 app.use("/listings",listings);
 app.use("/listings/:id/reviews",reviews)
 
