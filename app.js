@@ -13,7 +13,7 @@ const Review = require("./models/review.js");
 const session=require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const User=require("./models/user.js");
 
 const listingRouter = require("./routes/listing.js");
@@ -56,6 +56,7 @@ app.get("/",(req,res)=>{
     res.send("Hello World");
 });
 
+
 app.use(session(sessionOptions));  // Always put flash and session before iinitializing routes
 app.use(flash());
 
@@ -70,19 +71,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
+   res.locals.currUser = req.user || null;
    res.locals.success = req.flash("success");
    res.locals.error = req.flash("error");
    next();
 });
 
-// app.get("/demouser",async(req,res)=>{
-//      let fakeUser = new User({
-//         email:"musicwithpremium@gmail.com",
-//         username:"shubhamliftss"
-//      })
-//     let registeredUser = await User.register(fakeUser,"helloWorld");
-//     res.send(registeredUser);
-// })
 
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter)
