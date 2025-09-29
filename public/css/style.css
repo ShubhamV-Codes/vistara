@@ -25,36 +25,70 @@ body{
 .nav-link{
    color:#222222 !important;
 }
-.f-info-links a{
-   text-decoration: none;
-   color:#222222;
-}
-.f-info-links:hover{
-   text-decoration: underline;
-   
-}
-.f-info-links,.f-info-socials,.f-info-brand{
-   width:100%;
-   display:flex;
-   justify-content:center;
-   align-items:center; 
-
+/* Styling for Footer */
+/* Ensure the page takes full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.f-info-socials i{
-   font-size:1.25rem;   
-   margin-right:1 rem;
-  
+/* Make main content expand to push footer down */
+.container, .show-main {
+  flex: 1;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #f4f4f4;
+  border-top: 1px solid #ddd;
+  padding: 1.5rem 1rem;
+  text-align: center;
 }
 
 .f-info {
-  text-align: center;
-  height: 8rem;
-  background-color: #ebebeb;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly; /* correct */
-  align-items: center;           /* vertical centering */
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.f-info-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.f-info-socials i {
+  font-size: 1.4rem;
+  color: #555;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.f-info-socials i:hover {
+  color: #fe424d;
+}
+
+.f-info-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.f-info-links a:hover {
+  color: #fe424d;
+  text-decoration: underline;
+}
+
+.f-info-brand {
+  font-size: 0.9rem;
+  color: #777;
 }
 
 /* Cards */
@@ -278,4 +312,282 @@ body{
   align-content: center;
 }
 
+/*  Styling for Login Page */
 
+/* Page wrapper centers the card */
+.login-page {
+  flex: 1;  /* fills between navbar and footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+/* Card styling */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.login-card h2 {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Inputs */
+.login-card .form-control {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+}
+
+.login-card .form-control:focus {
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+}
+
+/* Button */
+.login-card .btn {
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-weight: 500;
+  margin-top:1.5rem;
+}
+
+/* Styling for Terms */
+
+.terms-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.terms-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1a73e8; /* make heading visible */
+    font-size: 32px;
+}
+
+.terms-container h2 {
+    margin-top: 20px;
+    color: #0b3d91;
+    font-size: 22px;
+}
+
+.terms-container p {
+    margin: 10px 0 20px 0;
+    font-size: 16px;
+}
+
+.terms-container hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+
+/* Styling for Privacy */
+
+.privacy-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.privacy-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1a73e8; /* main heading color */
+    font-size: 32px;
+}
+
+.privacy-container h2 {
+    margin-top: 20px;
+    color: #0b3d91;
+    font-size: 22px;
+}
+
+.privacy-container p {
+    margin: 10px 0 20px 0;
+    font-size: 16px;
+}
+
+.privacy-container hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+
+/* Hero Section */
+.hero {
+    height: 45vh; /* slightly reduced height */
+    background: url('/images/vistaraBG.png') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    /* border-radius: 1rem;
+    margin-top:0.75rem; */
+    /* border-radius:  0 0 1rem 1rem; */
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* Slightly lighter overlay */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Button inside hero */
+.hero .exp-btn {
+    font-size: 1rem;
+    padding: 10px 22px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #fe424d !important ;
+}
+
+.hero .btn:hover {
+    transform: scale(1.05);
+     /* Slight color change on hover */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        height: 40vh;
+        padding: 0 10px;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .hero .btn {
+        padding: 8px 18px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Features Section */
+.features h2 {
+    color: #0b3d91;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.feature-card i {
+    color: #1a73e8;
+    margin-bottom: 15px;
+}
+
+/* Feature Card Text */
+.feature-card h5 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* CTA Section */
+.cta {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.cta h2 {
+    color: #0b3d91;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.cta .btn {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    transition: transform 0.3s ease;
+}
+
+.cta .btn:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .features h2, .cta h2 {
+        font-size: 1.5rem;
+    }
+}

@@ -15,6 +15,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User=require("./models/user.js");
+const pagesRoutes = require('./routes/pages');
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -52,9 +53,6 @@ const sessionOptions = {
     }
 };
 
-app.get("/",(req,res)=>{
-    res.send("Hello World");
-});
 
 
 app.use(session(sessionOptions));  // Always put flash and session before iinitializing routes
@@ -77,10 +75,14 @@ app.use((req,res,next)=>{
    next();
 });
 
+app.get("/",(req,res)=>{
+   res.render("listings/home");
+});
 
 app.use("/listings",listingRouter);
-app.use("/listings/:id/reviews",reviewRouter)
+app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
+app.use(pagesRoutes);;
 
 app.all(/.*/,(req,res,next)=>{
   next(new ExpressError(404,"Page Not Found"))
