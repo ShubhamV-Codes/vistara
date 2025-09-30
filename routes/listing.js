@@ -57,7 +57,7 @@ router.post("/", validateListing, isLoggedIn , wrapAsync(async (req, res) => {
 }));
 
 
-//Edit Route
+//Edit Route  
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
@@ -65,8 +65,8 @@ router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(async (req, res) => {
   res.render("listings/edit.ejs", { listing });
 }));
 
-//Update Route
-router.put("/:id",isLoggedIn ,isOwner, validateListing, wrapAsync(async (req, res) => {
+//Update Route 
+router.put("/:id",isLoggedIn , isOwner, validateListing, wrapAsync(async (req, res) => {
   let { id } = req.params;
   let data = req.body.listing;
   if (typeof data.image === "string" && data.image.trim() !== "") {
@@ -77,8 +77,9 @@ router.put("/:id",isLoggedIn ,isOwner, validateListing, wrapAsync(async (req, re
   res.redirect(`/listings/${id}`);
 }));
 
-//Delete Route
-router.delete("/:id", isLoggedIn ,isOwner, wrapAsync(async (req, res) => {
+//Delete Route , 
+
+router.delete("/:id", isLoggedIn ,isOwner , wrapAsync(async (req, res) => {
   let { id } = req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);
   req.flash("success","Listing Deleted");
