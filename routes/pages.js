@@ -1,15 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Listing = require("../models/listing.js");
+const pageController = require("../controllers/pages");
 
 // Privacy Page
-router.get('/privacy', (req, res) => {
-    res.render('listings/privacy');
-});
+router.get('/privacy', pageController.privacyPage );
 
 // Terms Page
-router.get('/terms', (req, res) => {
-    res.render('listings/terms');
-});
+router.get('/terms',pageController.termPage);
 
 module.exports = router;
