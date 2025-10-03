@@ -594,3 +594,88 @@ footer {
 .starability-result{
   font-size: 1rem;
 }
+.original-image-preview {
+  width: 150px;     /* adjust width as needed */
+  height: auto;     /* maintain aspect ratio */
+  border: 1px solid #ccc; /* optional border */
+  border-radius: 4px;      /* optional rounded corners */
+  display: block;
+  margin-top: 5px;
+}
+
+/* Map Styling */
+
+.location-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers child elements horizontally */
+}
+
+#map {
+  height: 400px;
+  width: 80vh;       /* You can also use %, e.g., 80% */
+  margin: 0 auto;    /* Centers horizontally */
+  border: 1px solid #ccc; /* Optional: for visibility */
+  border-radius: 8px; /* Optional: rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Optional: subtle shadow */
+}
+.filter-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: center;
+  position: relative;
+  gap: 8px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 80px;
+  opacity: 0.7;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.filter:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.more-filters {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+
+@media (min-width: 992px) {
+  .more-btn { display: none; }      /* full screen: hide More button */
+}
+@media (max-width: 991px) {
+  .more-btn { display: flex; }      /* small screen: show More button */
+}
+
+
+.tax-info{
+  display:none;
+}
+.tax-toggle{
+  border:1px solid black;
+  border-radius:1rem;
+  height:2.25rem;
+  padding:.5rem;
+  margin-left:1rem;
+  display:flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+}
