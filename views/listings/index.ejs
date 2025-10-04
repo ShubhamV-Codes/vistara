@@ -2,108 +2,169 @@
 
 <div class="filter-container d-flex flex-wrap gap-2 p-2 mt-3 position-relative">
   
-  <!-- Always visible filters -->
-  <div class="filter"><i class="fa-solid fa-fire"></i><p>Trending</p></div>
-  <div class="filter"><i class="fa-solid fa-bed"></i><p>Room</p></div>
-  <div class="filter"><i class="fa-solid fa-city"></i><p>Cities</p></div>
-  <div class="filter"><i class="fa-solid fa-mountain-city"></i><p>Mountains</p></div>
-  <div class="filter"><i class="fa-solid fa-building"></i><p>Castles</p></div>
-  <div class="filter"><i class="fa-solid fa-person-swimming"></i><p>Pool</p></div>
-  <div class="filter"><i class="fa-solid fa-campground"></i><p>Camping</p></div>
-  <div class="filter"><i class="fa-solid fa-cow"></i><p>Farms</p></div>
-  <div class="filter"><i class="fa-solid fa-skiing"></i><p>Skiing</p></div>
-  <div class="filter"><i class="fa-solid fa-tree"></i><p>Forest</p></div>
-  <div class="filter"><i class="fa-solid fa-umbrella-beach"></i><p>Beach</p></div>
-  <div class="filter"><i class="fa-solid fa-mountain"></i><p>Hiking</p></div>
-  
-  <!-- Toggle button for collapse -->
-  <button class="filter more-btn  btn btn-light btn-sm" 
+  <!-- Always visible filters (first 8) -->
+  <a href="/listings?category=Trending" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-fire"></i>
+    <p>Trending</p>
+  </a>
+
+  <a href="/listings?category=Room" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-bed"></i>
+    <p>Room</p>
+  </a>
+
+  <a href="/listings?category=Cities" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-city"></i>
+    <p>Cities</p>
+  </a>
+
+  <a href="/listings?category=Mountains" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-mountain-city"></i>
+    <p>Mountains</p>
+  </a>
+
+  <a href="/listings?category=Castles" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-building"></i>
+    <p>Castles</p>
+  </a>
+
+  <a href="/listings?category=Pool" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-person-swimming"></i>
+    <p>Pool</p>
+  </a>
+
+  <a href="/listings?category=Camping" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-campground"></i>
+    <p>Camping</p>
+  </a>
+
+  <a href="/listings?category=Farms" class="filter text-decoration-none filter-main">
+    <i class="fa-solid fa-cow"></i>
+    <p>Farms</p>
+  </a>
+
+  <!-- Filters that hide on smaller screens -->
+  <a href="/listings?category=Skiing" class="filter text-decoration-none filter-responsive">
+    <i class="fa-solid fa-skiing"></i>
+    <p>Skiing</p>
+  </a>
+
+  <a href="/listings?category=Forest" class="filter text-decoration-none filter-responsive">
+    <i class="fa-solid fa-tree"></i>
+    <p>Forest</p>
+  </a>
+
+  <a href="/listings?category=Beach" class="filter text-decoration-none filter-responsive">
+    <i class="fa-solid fa-umbrella-beach"></i>
+    <p>Beach</p>
+  </a>
+
+  <a href="/listings?category=Hiking" class="filter text-decoration-none filter-responsive">
+    <i class="fa-solid fa-mountain"></i>
+    <p>Hiking</p>
+  </a>
+  <a href="/listings?category=Skiing" class="filter text-decoration-none">
+        <i class="fa-solid fa-skiing"></i>
+        <p>Skiing</p>
+      </a>
+      <a href="/listings?category=Forest" class="filter text-decoration-none">
+        <i class="fa-solid fa-tree"></i>
+        <p>Forest</p>
+      </a>
+      <a href="/listings?category=Beach" class="filter text-decoration-none">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <p>Beach</p>
+      </a>
+  <a href="/listings?category=Hiking" class="filter text-decoration-none">
+        <i class="fa-solid fa-mountain"></i>
+        <p>Hiking</p>
+      </a>
+  <!-- More button (hidden on large screens) -->
+  <button class="filter more-btn btn btn-light btn-sm" 
           type="button" 
           data-bs-toggle="collapse" 
           data-bs-target="#extraFilters" 
           aria-expanded="false" 
           aria-controls="extraFilters">
-    <i class="fa-solid fa-ellipsis"></i><p>More</p>
+    <i class="fa-solid fa-ellipsis"></i>
+    <p>More</p>
   </button>
-
-   <div class="tax-toggle">
-      <div class="form-check-reverse form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-        <label class="form-check-label" for="switchCheckDefault">Display Total After Taxes</label>
-      
-    </div>
 
   <!-- Collapsible extra filters -->
   <div class="collapse w-100 mt-2" id="extraFilters">
     <div class="d-flex flex-wrap gap-2">
-      <div class="filter"><i class="fa-solid fa-hot-tub-person"></i><p>Spa</p></div>
-      <div clas="filter"><i class="fa-solid fa-snowflake"></i><p>Arctic</p></div>
-      <div class="filter"><i class="fa-solid fa-wine-glass"></i><p>Winery</p></div>
-      <div class="filter"><i class="fa-solid fa-ship"></i><p>Boat Trips</p></div>
-      <div class="filter"><i class="fa-solid fa-mug-hot"></i><p>Cafe</p></div>
-
-      <!-- add all extra filters here -->
+   
+      <!-- Additional filters -->
+      <a href="/listings?category=Spa" class="filter text-decoration-none">
+        <i class="fa-solid fa-hot-tub-person"></i>
+        <p>Spa</p>
+      </a>
+      <a href="/listings?category=Arctic" class="filter text-decoration-none">
+        <i class="fa-solid fa-snowflake"></i>
+        <p>Arctic</p>
+      </a>
+      <a href="/listings?category=Winery" class="filter text-decoration-none">
+        <i class="fa-solid fa-wine-glass"></i>
+        <p>Winery</p>
+      </a>
+      <a href="/listings?category=Boat Trips" class="filter text-decoration-none">
+        <i class="fa-solid fa-ship"></i>
+        <p>Boat Trips</p>
+      </a>
+      <a href="/listings?category=Cafe" class="filter text-decoration-none">
+        <i class="fa-solid fa-mug-hot"></i>
+        <p>Cafe</p>
+      </a>
     </div>
   </div>
 
 </div>
 
-  
-    </div> 
+<!-- Search feedback alert -->
+<!-- <% if (searchQuery && searchQuery.trim() !== '') { %>
+  <div class="container mt-3">
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <strong>Search results for:</strong> "<%= searchQuery %>"
+      <a href="/listings" class="btn btn-sm btn-outline-secondary ms-2">Clear Search</a>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <% if (allListings.length === 0) { %>
+      <div class="alert alert-warning">
+        No listings found for "<%= searchQuery %>". Try different keywords.
+      </div>
+    <% } %>
+  </div>
+<% } %> -->
 
-  <!-- you can add more filters here -->
-
-
-  <div class=" px-2 mt-4">
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3 mt-3">
-      <% for(let listing of allListings) { %>
-        <a href="/listings/<%= listing._id %>" class="listing-links">
-          <div class="card col listing-card">
-            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height:20rem">
-            <div class="card-img-overlay"></div>
-            <div class="card-body">
-              <div class="listing-title">
-                <b>
-                  <%= listing.title %>
-                </b>
-              </div>
-              <div class="listing-price">
-               <p> ₹ <%= listing.price.toLocaleString("en-IN") %> / night &nbsp;&nbsp; <i class="tax-info"> +18% TAX </i></p>  
-              </div>
-              
-            </div>
-          </div>
-        </a>
-        <% } %>
+<!-- Category filter feedback -->
+<% if (category && category.trim() !== '') { %>
+  <div class="container mt-3">
+    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+      <strong>Category:</strong> <%= category %>
+      <a href="/listings" class="btn btn-sm btn-outline-dark ms-2">View All</a>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
   </div>
+<% } %>
 
-
-<!-- <script>
-  function toggleMore() {
-    const moreFilters = document.querySelector('.more-filters'); // select hidden filters
-    const moreBtn = document.querySelector('.more-btn p');       // select button text
-
-    moreFilters.classList.toggle('d-none'); // toggle visibility
-
-    // Change button text
-    if (moreFilters.classList.contains('d-none')) {
-      moreBtn.textContent = 'More';
-    } else {
-      moreBtn.textContent = 'Less';
-    }
-  }
-</script> -->
-
-
-<script>
-let taxSwitch = document.getElementById("switchCheckDefault");
-taxSwitch.addEventListener("click",()=>{
-  let taxInfo = document.getElementsByClassName("tax-info");
- for(let info of taxInfo){
-  info.style.display = info.style.display === "inline" ? "none" : "inline";
-}
-
-});
-
-</script>
+<!-- Listings grid -->
+<div class="px-2 mt-4">
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3 mt-3">
+    <% for(let listing of allListings) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-links">
+        <div class="card col listing-card">
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height:20rem">
+          <div class="card-img-overlay"></div>
+          <div class="card-body">
+            <div class="listing-title">
+              <b><%= listing.title %></b>
+            </div>
+            <div class="listing-price">
+              <p>₹ <%= listing.price.toLocaleString("en-IN") %> / night</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% } %>
+  </div>
+</div>

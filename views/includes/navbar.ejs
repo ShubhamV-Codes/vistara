@@ -1,26 +1,187 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
-<div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">List Your House</a>
+<style>
+  /* Brand */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #fe424d;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .navbar-brand:hover {
+    color: #e63946;
+  }
 
-  <% if (currUser) { %>
-        <a class="nav-link" href="/logout"><b>Logout</b></a>
-   
-  <% } else { %>
-     <a class="nav-link" href="/signup"><b>Signup</b></a>
-    <a class="nav-link" href="/login"><b>Login</b></a>
-  <% } %>
+  /* Buttons */
+  .btn-search {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    border: none;
+  }
+  .btn-search:hover {
+    background-color: #e63946;
+  }
+
+  /* Nav Links */
+  .nav-links, .auth-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .nav-links a, .auth-links a {
+    color: #fe424d;;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-links a:hover, .auth-links a:hover {
+    color: #fe424d;
+  }
+
+  /* Sidebar */
+  #sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.3s ease;
+    padding-top: 60px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  }
+  #sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    color: #333;
+    display: block;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+  #sidebar a:hover {
+    background-color: #f8f9fa;
+    color: #fe424d;
+    border-left-color: #fe424d;
+    padding-left: 30px;
+  }
+  #sidebar .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+  }
+  #sidebar .close-btn:hover {
+    color: #fe424d;
+    background-color: #f8f9fa;
+    transform: rotate(90deg);
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100%; height:100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1040;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Hamburger */
+  #hamburgerBtn { display: none; }
+  @media (max-width: 1200px) { 
+    .auth-links { display: none; } 
+    #hamburgerBtn { display: block; }
+  }
+</style>
+
+<nav class="navbar bg-light border-bottom sticky-top px-2">
+  <div class="container-fluid p-0 d-flex align-items-center gap-2">
+    <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i> Vistara</a>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/listings">Explore</a>
+      <a href="/listings/new">List Your House</a>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <div class="auth-links">
+        <% if(currUser){ %>
+          <a href="/logout">Logout</a>
+        <% } else { %>
+          <a href="/signup">Signup</a>
+          <a href="/login">Login</a>
+        <% } %>
+      </div>
+      <button class="navbar-toggler" type="button" id="hamburgerBtn">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div id="sidebar">
+  <span class="close-btn" id="closeSidebar">&times;</span>
+  <div class="sidebar-content">
+    <a href="/">Home</a>
+    <a href="/listings">Explore</a>
+    <a href="/listings/new">List Your House</a>
+    <% if(currUser){ %>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/signup">Signup</a>
+      <a href="/login">Login</a>
+    <% } %>
+  </div>
 </div>
 
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const closeBtn = document.getElementById("closeSidebar");
+  const overlay = document.getElementById("sidebarOverlay");
 
-    </div>
-</nav>
+  function openSidebar() {
+    sidebar.style.width = "280px";
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+  function closeSidebar() {
+    sidebar.style.width = "0";
+    overlay.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+  hamburgerBtn.addEventListener("click", e => { e.stopPropagation(); openSidebar(); });
+  closeBtn.addEventListener("click", closeSidebar);
+  overlay.addEventListener("click", closeSidebar);
+  window.addEventListener("click", e => {
+    if (!sidebar.contains(e.target) && e.target !== hamburgerBtn && sidebar.style.width === "280px") closeSidebar();
+  });
+  document.addEventListener("keydown", e => {
+    if(e.key==="Escape" && sidebar.style.width==="280px") closeSidebar();
+  });
+</script>
