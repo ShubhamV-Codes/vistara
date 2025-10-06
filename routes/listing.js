@@ -25,6 +25,8 @@ router.route("/:id")
 
   
 router.get("/:id/edit", isLoggedIn, isOwner, upload.single('listing[image]'), wrapAsync(listingController.editListings));
-
+router.get("/profile", isLoggedIn, async (req, res) => {
+  res.render("profile.ejs", { currUser: req.user });
+});
 
 module.exports = router;

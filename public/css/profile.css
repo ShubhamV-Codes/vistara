@@ -1,0 +1,149 @@
+/* Profile Header */
+.profile-header {
+  text-align: center;
+  padding: 3rem 1rem 4rem;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  color: #fff;
+  margin-bottom: 2.5rem;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff7e5f;
+  font-size: 40px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.profile-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.profile-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Listings Section */
+.my-listings-section {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  padding: 2rem;
+}
+
+.my-listings-section h3 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+} */
+
+.card img {
+  height: 220px;
+  object-fit:fill;
+  transition: transform 0.3s ease;
+  margin-left:0.1rem;
+  
+}
+
+/* .card:hover img {
+  transform: scale(1.03);
+} */
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.card-text {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.badge {
+  background: #ff7e5f;
+  color: #fff;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.85rem;
+}
+.badge:hover{
+    color:blue;
+}
+
+.card-footer {
+  background: #f8f8f8;
+  border-top: 1px solid #eee;
+  padding: 0.75rem 1rem;
+}
+
+/* Buttons */
+.btn-outline-primary {
+  color: #ff7e5f;
+  border-color: #ff7e5f;
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+  background: #ff7e5f;
+  color: #fff;
+  border: none;
+}
+
+.btn-outline-danger {
+  color: #ff4d4d;
+  border-color: #ff4d4d;
+}
+
+.btn-outline-danger:hover {
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+}
+
+/* Empty State */
+.text-muted i {
+  color: #ff7e5f;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+    font-size: 34px;
+  }
+  .card img {
+    height: 180px;
+  }
+}

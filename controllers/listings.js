@@ -1,4 +1,3 @@
-
 const Listing = require("../models/listing");
 const Review = require("../models/review");
 const mbxGeoCoding = require('@mapbox/mapbox-sdk/services/geocoding');
@@ -95,6 +94,7 @@ module.exports.createListing = async (req, res) => {
     res.redirect("/listings/new");
   }
 };
+
 // Render edit form
 module.exports.editListings = async (req, res) => {
   const { id } = req.params;
@@ -139,4 +139,22 @@ module.exports.deleteListing = async (req, res) => {
   await Listing.findByIdAndDelete(id);
   req.flash("success", "Listing Deleted");
   res.redirect("/listings");
+};
+
+// Get user's listings (API endpoint for navbar dropdown and profile page)
+module.exports.getUserListings = async (req, res) => {
+  try {
+    const listings = await Listing.find({ owner: req.user._id })
+      .sort({ createdAt: -1 }); // newest first
+    
+    res.json(listings);
+  } catch (err) {
+    console.error("Error fetching user listings:", err);
+    res.status(500).json({ error: "Failed to fetch listings" });
+  }
+};
+
+// Render profile page
+module.exports.showProfile = (req, res) => {
+  res.render("users/profile", { currUser: req.user });
 };

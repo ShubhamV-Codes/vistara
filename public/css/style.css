@@ -696,3 +696,17 @@ footer {
     display: flex;
   }
 }
+
+/*  Styling  already Loggedin User */
+
+.haveOldAccount{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  margin-top:1rem;
+  color:black;
+}
+.haveOldAccount:hover{
+     color: #fe424d;
+     text-decoration: underline;
+}
