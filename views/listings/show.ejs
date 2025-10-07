@@ -46,28 +46,6 @@
           </div>
         </div>
 
-        <!-- Booking Card (Mobile & Desktop) -->
-        <div class="booking-card mb-4">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="booking-price">
-              ₹<%= listing.price.toLocaleString("en-IN") %> <span>/ night</span>
-            </div>
-          </div>
-
-          <% if (currUser && listing.owner && currUser._id.toString()===listing.owner._id.toString()) { %>
-            <div class="alert alert-info text-center mb-0">
-              <i class="bi bi-info-circle"></i> This is your listing
-            </div>
-            <% } else { %>
-              <button class="book-btn" data-bs-toggle="modal" data-bs-target="#ownerDetailsModal">
-                <i class="bi bi-calendar-check"></i> Book Now
-              </button>
-              <p class="booking-info mb-0">
-                <i class="bi bi-shield-check"></i> Contact owner to confirm booking
-              </p>
-              <% } %>
-        </div>
-
         <!-- Edit/Delete Buttons -->
         <% if (currUser && listing.owner && currUser._id.toString()===listing.owner._id.toString()) { %>
           <div class="d-flex gap-2 mb-4">

@@ -2,7 +2,7 @@ const Listing = require("../models/listing");
 const Review = require("../models/review");
 const mbxGeoCoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
-const geoCodingClient = mbxGeoCoding({ accessToken: mapToken });
+const geoCodingClient = mbxGeoCoding({accessToken:mapToken});
 
 // List all listings, optionally filter by category
 module.exports.index = async (req, res) => {
