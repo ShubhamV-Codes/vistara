@@ -1,244 +1,245 @@
 <% layout("/layouts/boilerplate") %>
 
-  <div class="container mt-4">
-    <div class="show-content">
+<div class="container mt-4">
+  <div class="show-content">
 
-      <!-- Main Content -->
-      <div class="main-content">
+    <!-- Main Content -->
+    <div class="main-content">
 
-        <!-- Listing Title -->
-        <div class="show-heading mb-4">
-          <h2>
-            <%= listing.title %>
-          </h2>
-          <p class="text-muted mb-0">
-            <i class="bi bi-geo-alt-fill text-danger"></i>
-            <%= listing.location %>, <%= listing.country %>
-          </p>
-        </div>
-
-        <!-- Listing Image -->
-        <div class="card shadow-lg mb-4 rounded-4 border-0">
-          <img src="<%= listing.image.url %>" alt="listing_image" class="card-img-top rounded-4"
-            style="height: 400px; object-fit: cover;" />
-        </div>
-
-        <!-- Listing Details -->
-        <div class="card shadow-sm mb-4 rounded-3 border-0">
-          <div class="card-body p-4">
-            <div class="d-flex align-items-center mb-3">
-              <div class="owner-avatar me-3">
-                <%= listing.owner ? listing.owner.username.charAt(0).toUpperCase() : 'S' %>
-              </div>
-              <div>
-                <p class="owner-name mb-0">
-                  Hosted by <%= listing.owner ? listing.owner.username : "Shubham" %>
-                </p>
-                <p class="text-muted mb-0" style="font-size: 0.9rem;">Property Owner</p>
-              </div>
-            </div>
-
-            <hr>
-
-            <p class="card-text text-muted mb-0">
-              <%= listing.description %>
-            </p>
-          </div>
-        </div>
-
-        <!-- Edit/Delete Buttons -->
-        <% if (currUser && listing.owner && currUser._id.toString()===listing.owner._id.toString()) { %>
-          <div class="d-flex gap-2 mb-4">
-            <a href="/listings/<%= listing._id %>/edit" class="btn btn-warning px-4">
-              <i class="bi bi-pencil-square"></i> Edit
-            </a>
-            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" class="d-inline">
-              <button class="btn btn-danger px-4">
-                <i class="bi bi-trash"></i> Delete
-              </button>
-            </form>
-          </div>
-          <% } %>
-
-            <hr class="my-4">
-
-            <!-- Review Form -->
-            <div class="mb-4">
-              <% if (!currUser) { %>
-                <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
-                  <span><i class="bi bi-info-circle"></i> You need to login to add a review</span>
-                  <a href="/login" class="btn btn-primary btn-sm">Login</a>
-                </div>
-                <% } else { %>
-                  <h4 class="reviews-heading mb-3">Leave a Review</h4>
-                  <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
-
-                    <!-- Rating -->
-                    <div class="mb-3">
-                      <label for="rating" class="form-label">Rating</label>
-                      <fieldset class="starability-slot">
-                        <% for (let i=1; i <=5; i++) { %>
-                          <input type="radio" id="rate<%= i %>" name="review[rating]" value="<%= i %>" <%=i===1
-                            ? 'checked' : '' %> />
-                          <label for="rate<%= i %>"
-                            title="<%= ['Terrible', 'Not good', 'Average', 'Very good', 'Amazing'][i-1] %>">
-                            <%= i %> star
-                          </label>
-                          <% } %>
-                      </fieldset>
-                    </div>
-
-                    <!-- Comment -->
-                    <div class="mb-3">
-                      <label for="comment" class="form-label">Comment</label>
-                      <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control"
-                        required></textarea>
-                      <div class="invalid-feedback">Please add some comments for review</div>
-                    </div>
-
-                    <button class="btn btn-outline-dark">Submit Review</button>
-                  </form>
-                  <% } %>
-            </div>
-
-            <!-- Reviews List -->
-            <% if (listing.reviews.length> 0) { %>
-              <div class="mb-4">
-                <h4 class="reviews-heading mb-4">Reviews by Customers</h4>
-                <div class="row g-3">
-                  <% listing.reviews.forEach(review=> { %>
-                    <div class="col-12 col-md-6">
-                      <div class="card review-card h-100 shadow-sm border-0">
-                        <div class="card-body">
-                          <div class="d-flex align-items-center mb-2">
-                            <div
-                              class="rounded-circle d-flex align-items-center justify-content-center fw-semibold text-white me-2"
-                              style="width: 40px; height: 40px; background: linear-gradient(135deg, #667eea, #764ba2);">
-                              <%= review.author ? review.author.username.charAt(0).toUpperCase() : 'A' %>
-                            </div>
-                            <div>
-                              <p class="mb-0 fw-semibold">@<%= review.author ? review.author.username : "Anonymous" %>
-                              </p>
-                              <p class="starability-result mb-0" data-rating="<%= review.rating %>"
-                                style="font-size: 0.9rem;">Rating</p>
-                            </div>
-                          </div>
-
-                          <hr>
-                          <p class="card-text text-muted">
-                            <%= review.comment %>
-                          </p>
-
-                          <% if (currUser && review.author && currUser._id.toString()===review.author._id.toString()) {
-                            %>
-                            <form method="POST"
-                              action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                              <button class="btn btn-sm btn-outline-danger mt-2">Delete Review</button>
-                            </form>
-                            <% } %>
-                        </div>
-                      </div>
-                    </div>
-                    <% }) %>
-                </div>
-              </div>
-              <% } %>
-
-                <hr class="my-4">
-
-                <!-- Map -->
-                <div class="mb-4">
-                  <h3 class="mb-3">Where You'll Be</h3>
-                  <div id="map" style="height: 400px; border-radius: 12px; overflow: hidden;"></div>
-                </div>
-
+      <!-- Listing Title -->
+      <div class="show-heading mb-4">
+        <h2><%= listing.title %></h2>
+        <p class="text-muted mb-0">
+          <i class="bi bi-geo-alt-fill text-danger"></i>
+          <%= listing.location %>
+        </p>
       </div>
 
-      <!-- Booking Sidebar (Desktop & Mobile) -->
-      <div class="booking-sidebar">
+      <!-- Listing Image -->
+      <div class="card shadow-lg mb-4 rounded-4 border-0">
+        <img src="<%= listing.image.url %>" alt="listing_image" class="card-img-top rounded-4"
+          style="height: 400px; object-fit: cover;" />
+      </div>
+
+      <!-- Listing Details -->
+      <div class="card shadow-sm mb-4 rounded-3 border-0">
+        <div class="card-body p-4">
+          <div class="d-flex align-items-center mb-3">
+            <div class="owner-avatar me-3">
+              <%= listing.owner ? listing.owner.username.charAt(0).toUpperCase() : 'S' %>
+            </div>
+            <div>
+              <p class="owner-name mb-0">
+                Hosted by <%= listing.owner ? listing.owner.username : "Shubham" %>
+              </p>
+              <p class="text-muted mb-0" style="font-size: 0.9rem;">Property Owner</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <p class="card-text text-muted mb-0"><%= listing.description %></p>
+        </div>
+      </div>
+
+      <!-- Edit/Delete Buttons -->
+      <% if (currUser && listing.owner && currUser._id.toString()===listing.owner._id.toString()) { %>
+        <div class="d-flex gap-2 mb-4">
+          <a href="/listings/<%= listing._id %>/edit" class="btn btn-warning px-4">
+            <i class="bi bi-pencil-square"></i> Edit
+          </a>
+          <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" class="d-inline">
+            <button class="btn btn-danger px-4">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </form>
+        </div>
+      <% } %>
+
+      <hr class="my-4">
+
+      <!-- MOBILE BOOKING CARD - Moved Above Reviews -->
+      <div class="d-md-none mb-4">
         <div class="booking-card">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="booking-price">
               ₹<%= listing.price.toLocaleString("en-IN") %> <span>/ night</span>
             </div>
           </div>
-
           <% if (currUser && listing.owner && currUser._id.toString()===listing.owner._id.toString()) { %>
             <div class="alert alert-info text-center mb-0">
               <i class="bi bi-info-circle"></i> This is your listing
             </div>
-            <% } else { %>
-              <button class="book-btn" data-bs-toggle="modal" data-bs-target="#ownerDetailsModal">
-                <i class="bi bi-calendar-check"></i> Book Now
-              </button>
-              <p class="booking-info mb-0">
-                <i class="bi bi-shield-check"></i> Contact owner to confirm booking
-              </p>
-              <% } %>
+          <% } else { %>
+            <button class="book-btn" data-bs-toggle="modal" data-bs-target="#ownerDetailsModal">
+              <i class="bi bi-calendar-check"></i> Book Now
+            </button>
+            <p class="booking-info mb-0">
+              <i class="bi bi-shield-check"></i> Contact owner to confirm booking
+            </p>
+          <% } %>
         </div>
       </div>
 
+      <!-- Review Form -->
+      <div class="mb-4">
+        <% if (!currUser) { %>
+          <div class="alert alert-info d-flex align-items-center justify-content-between" role="alert">
+            <span><i class="bi bi-info-circle"></i> You need to login to add a review</span>
+            <a href="/login" class="btn btn-primary btn-sm">Login</a>
+          </div>
+        <% } else { %>
+          <h4 class="reviews-heading mb-3">Leave a Review</h4>
+          <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
+
+            <!-- Rating -->
+            <div class="mb-3">
+              <label for="rating" class="form-label">Rating</label>
+              <fieldset class="starability-slot">
+                <% for (let i=1; i <=5; i++) { %>
+                  <input type="radio" id="rate<%= i %>" name="review[rating]" value="<%= i %>" <%=i===1 ? 'checked' : '' %> />
+                  <label for="rate<%= i %>" title="<%= ['Terrible', 'Not good', 'Average', 'Very good', 'Amazing'][i-1] %>">
+                    <%= i %> star
+                  </label>
+                <% } %>
+              </fieldset>
+            </div>
+
+            <!-- Comment -->
+            <div class="mb-3">
+              <label for="comment" class="form-label">Comment</label>
+              <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+              <div class="invalid-feedback">Please add some comments for review</div>
+            </div>
+
+            <button class="btn btn-outline-dark">Submit Review</button>
+          </form>
+        <% } %>
+      </div>
+
+      <!-- Reviews List -->
+      <% if (listing.reviews.length> 0) { %>
+        <div class="mb-4">
+          <h4 class="reviews-heading mb-4">Reviews by Customers</h4>
+          <div class="row g-3">
+            <% listing.reviews.forEach(review => { %>
+              <div class="col-12 col-md-6">
+                <div class="card review-card h-100 shadow-sm border-0">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                      <div class="rounded-circle d-flex align-items-center justify-content-center fw-semibold text-white me-2"
+                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <%= review.author ? review.author.username.charAt(0).toUpperCase() : 'A' %>
+                      </div>
+                      <div>
+                        <p class="mb-0 fw-semibold">@<%= review.author ? review.author.username : "Anonymous" %></p>
+                        <p class="starability-result mb-0" data-rating="<%= review.rating %>" style="font-size: 0.9rem;">Rating</p>
+                      </div>
+                    </div>
+
+                    <hr>
+                    <p class="card-text text-muted"><%= review.comment %></p>
+
+                    <% if (currUser && review.author && currUser._id.toString()===review.author._id.toString()) { %>
+                      <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                        <button class="btn btn-sm btn-outline-danger mt-2">Delete Review</button>
+                      </form>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      <% } %>
+
+      <hr class="my-4">
+
+      <!-- Map -->
+      <div class="mb-4">
+        <h3 class="mb-3">Where You'll Be</h3>
+        <div id="map" style="height: 400px; border-radius: 12px; overflow: hidden;"></div>
+      </div>
+
     </div>
+
+    <!-- Booking Sidebar (Desktop Only) -->
+    <div class="booking-sidebar d-none d-md-block">
+      <div class="booking-card">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="booking-price">
+            ₹<%= listing.price.toLocaleString("en-IN") %> <span>/ night</span>
+          </div>
+        </div>
+
+        <% if (currUser && listing.owner && currUser._id.toString()===listing.owner._id.toString()) { %>
+          <div class="alert alert-info text-center mb-0">
+            <i class="bi bi-info-circle"></i> This is your listing
+          </div>
+        <% } else { %>
+          <button class="book-btn" data-bs-toggle="modal" data-bs-target="#ownerDetailsModal">
+            <i class="bi bi-calendar-check"></i> Book Now
+          </button>
+          <p class="booking-info mb-0">
+            <i class="bi bi-shield-check"></i> Contact owner to confirm booking
+          </p>
+        <% } %>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <!-- Owner Details Modal -->
-  <div class="modal fade" id="ownerDetailsModal" tabindex="-1" aria-labelledby="ownerDetailsModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+<!-- Owner Details Modal -->
+<div class="modal fade" id="ownerDetailsModal" tabindex="-1" aria-labelledby="ownerDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
 
-        <div class="modal-header border-0">
-          <h5 class="modal-title" id="ownerDetailsModalLabel">Contact Property Owner</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="ownerDetailsModalLabel">Contact Property Owner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="text-center mb-4">
+          <div class="owner-avatar mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+            <%= listing.owner ? listing.owner.username.charAt(0).toUpperCase() : 'S' %>
+          </div>
+          <h4 class="mb-1"><%= listing.owner ? listing.owner.username : "Shubham" %></h4>
+          <p class="text-muted mb-0">Property Owner</p>
         </div>
 
-        <div class="modal-body">
-          <div class="text-center mb-4">
-            <div class="owner-avatar mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
-              <%= listing.owner ? listing.owner.username.charAt(0).toUpperCase() : 'S' %>
-            </div>
-            <h4 class="mb-1">
-              <%= listing.owner ? listing.owner.username : "Shubham" %>
-            </h4>
-            <p class="text-muted mb-0">Property Owner</p>
+        <div class="owner-details">
+          <h6 class="mb-3">Property Details:</h6>
+          <p><strong>Property:</strong> <%= listing.title %></p>
+          <p><strong>Location:</strong> <%= listing.location %>, <%= listing.country %></p>
+          <p><strong>Price:</strong> ₹<%= listing.price.toLocaleString("en-IN") %> / night</p>
+          <hr>
+          <p><strong>Owner Email:</strong> 
+            <a href="mailto:<%= listing.owner ? listing.owner.email : 'owner@example.com' %>">
+              <%= listing.owner ? listing.owner.email : "owner@example.com" %>
+            </a>
+          </p>
+          <div class="alert alert-warning mt-3 mb-0">
+            <small>
+              <i class="bi bi-exclamation-triangle"></i>
+              Please contact the owner directly to discuss booking details, availability, and payment arrangements.
+            </small>
           </div>
-
-          <div class="owner-details">
-            <h6 class="mb-3">Property Details:</h6>
-            <p><strong>Property:</strong>
-              <%= listing.title %>
-            </p>
-            <p><strong>Location:</strong>
-              <%= listing.location %>, <%= listing.country %>
-            </p>
-            <p><strong>Price:</strong> ₹<%= listing.price.toLocaleString("en-IN") %> / night</p>
-            <hr>
-            <p>
-              <strong>Owner Email:</strong>
-              <a href="mailto:<%= listing.owner ? listing.owner.email : 'owner@example.com' %>">
-                <%= listing.owner ? listing.owner.email : "owner@example.com" %>
-              </a>
-            </p>
-            <div class="alert alert-warning mt-3 mb-0">
-              <small>
-                <i class="bi bi-exclamation-triangle"></i>
-                Please contact the owner directly to discuss booking details, availability, and payment arrangements.
-              </small>
-            </div>
-          </div>
-
-          <a href="mailto:<%= listing.owner ? listing.owner.email : 'owner@example.com' %>?subject=Booking%20Inquiry%20for%20<%= encodeURIComponent(listing.title) %>&body=Hi%20<%= listing.owner ? listing.owner.username : 'there' %>,%0D%0A%0D%0AI%20am%20interested%20in%20booking%20your%20property%20'<%= encodeURIComponent(listing.title) %>'%20in%20<%= encodeURIComponent(listing.location) %>.%0D%0A%0D%0ACould%20you%20please%20provide%20more%20information%20about%20availability%20and%20booking%20process?%0D%0A%0D%0AThank%20you!"
-            class="contact-owner-btn text-decoration-none text-center d-block">
-            <i class="bi bi-envelope"></i> Send Email to Owner
-          </a>
         </div>
+
+        <a href="mailto:<%= listing.owner ? listing.owner.email : 'owner@example.com' %>?subject=Booking%20Inquiry%20for%20<%= encodeURIComponent(listing.title) %>&body=Hi%20<%= listing.owner ? listing.owner.username : 'there' %>,%0D%0A%0D%0AI%20am%20interested%20in%20booking%20your%20property%20'<%= encodeURIComponent(listing.title) %>'%20in%20<%= encodeURIComponent(listing.location) %>.%0D%0A%0D%0ACould%20you%20please%20provide%20more%20information%20about%20availability%20and%20booking%20process?%0D%0A%0D%0AThank%20you!"
+          class="contact-owner-btn text-decoration-none text-center d-block">
+          <i class="bi bi-envelope"></i> Send Email to Owner
+        </a>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Scripts -->
-  <script>
-    const mapToken = "<%= process.env.MAP_TOKEN %>";
-    const listing = <%- JSON.stringify(listing) %>;
-  </script>
-  <script src="/js/map.js"></script>
+<!-- Scripts -->
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  const listing = <%- JSON.stringify(listing) %>;
+</script>
+<script src="/js/map.js"></script>
