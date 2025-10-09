@@ -1,52 +1,264 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="privacy-container">
+<style>
+    .privacy-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin: -2rem -2rem 0;
+    }
+
+    .privacy-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+    }
+
+    .privacy-hero .subtitle {
+        font-size: 1.15rem;
+        opacity: 0.95;
+        max-width: 700px;
+        margin: 1rem auto;
+        line-height: 1.6;
+    }
+
+    .privacy-hero .last-updated {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        margin-top: 1rem;
+        font-weight: 500;
+    }
+
+    .privacy-container {
+        max-width: 900px;
+        margin: -3rem auto 4rem;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        padding: 3rem 2.5rem;
+    }
+
+    .privacy-container section {
+        margin-bottom: 3.5rem;
+        scroll-margin-top: 100px;
+    }
+
+    .section-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+
+    .privacy-container h2 {
+        font-size: 1.75rem;
+        color: #1a1a1a;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+    }
+
+    .privacy-container p {
+        color: #555;
+        margin-bottom: 1.25rem;
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    .privacy-container hr {
+        height: 1px;
+        background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+        border: none;
+        margin: 3rem 0;
+    }
+
+    .info-highlight {
+        background: #f8f9ff;
+        border-left: 4px solid #667eea;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 8px;
+    }
+
+    .info-highlight strong {
+        color: #667eea;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .contact-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        margin-top: 3rem;
+        text-align: center;
+    }
+
+    .contact-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .contact-section p {
+        color: rgba(255,255,255,0.95);
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 0.9rem 2rem;
+        background: white;
+        color: #667eea;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        color: #667eea;
+    }
+
+    @media (max-width: 768px) {
+        .privacy-hero {
+            padding: 3rem 1.5rem;
+            margin: -1rem -1rem 0;
+        }
+
+        .privacy-hero h1 {
+            font-size: 2rem;
+        }
+
+        .privacy-hero .subtitle {
+            font-size: 1rem;
+        }
+
+        .privacy-container {
+            margin: -2rem 1rem 2rem;
+            padding: 2rem 1.5rem;
+        }
+
+        .privacy-container h2 {
+            font-size: 1.4rem;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .section-number {
+            margin-bottom: 0.5rem;
+        }
+    }
+</style>
+
+<div class="privacy-hero">
     <h1>Privacy Policy</h1>
+    <p class="subtitle">Your privacy is important to us. This policy explains how Vistara collects, uses, and protects your personal information.</p>
+    <p class="last-updated">📅 Last Updated: October 9, 2025</p>
+</div>
 
+<div class="privacy-container">
     <section>
-        <h2>Information We Collect</h2>
+        <h2><span class="section-number">1</span> Information We Collect</h2>
         <p>We may collect information that you provide directly, such as your name, email address, phone number, payment details, and account preferences. We also automatically collect certain information when you use our services, including device information, IP address, browsing activity, and cookies.</p>
+        
+        <div class="info-highlight">
+            <strong>What This Means for You</strong>
+            <p style="margin: 0; color: #555;">We only collect information necessary to provide you with the best experience on our platform. You have control over what information you share with us.</p>
+        </div>
     </section>
 
     <hr>
 
     <section>
-        <h2>How We Use Your Information</h2>
+        <h2><span class="section-number">2</span> How We Use Your Information</h2>
         <p>We use the information to provide and improve our services, process bookings and payments, communicate with you about your reservations or account, and send relevant offers or updates. We also use data to personalize your experience, detect fraudulent activity, and comply with legal obligations.</p>
+        
+        <div class="info-highlight">
+            <strong>Your Benefits</strong>
+            <p style="margin: 0; color: #555;">Using your data allows us to create a personalized experience, ensure secure transactions, and keep you informed about your bookings and relevant opportunities.</p>
+        </div>
     </section>
 
     <hr>
 
     <section>
-        <h2>Sharing Your Information</h2>
+        <h2><span class="section-number">3</span> Sharing Your Information</h2>
         <p>We do not sell your personal information. We may share information with third-party service providers necessary to operate our platform, process payments, or deliver services, always under strict confidentiality. We may also disclose information if required by law or to protect the safety, rights, or property of Vistara or our users.</p>
+        
+        <div class="info-highlight">
+            <strong>We Never Sell Your Data</strong>
+            <p style="margin: 0; color: #555;">Your trust is paramount. We only share information with trusted partners who help us operate our services, and they are contractually bound to protect your data.</p>
+        </div>
     </section>
 
     <hr>
 
     <section>
-        <h2>Cookies and Tracking</h2>
+        <h2><span class="section-number">4</span> Cookies and Tracking</h2>
         <p>Vistara uses cookies and similar technologies to enhance your experience, remember your preferences, and analyze usage patterns. You can manage your cookie preferences through your browser settings.</p>
+        
+        <div class="info-highlight">
+            <strong>What Are Cookies?</strong>
+            <p style="margin: 0; color: #555;">Cookies are small text files that help us remember your preferences and improve your browsing experience. They don't contain personal information and can be disabled in your browser.</p>
+        </div>
     </section>
 
     <hr>
 
     <section>
-        <h2>Data Security</h2>
+        <h2><span class="section-number">5</span> Data Security</h2>
         <p>We implement appropriate security measures to protect your personal information from unauthorized access, disclosure, or alteration. However, no online platform can guarantee complete security.</p>
+        
+        <div class="info-highlight">
+            <strong>Our Commitment to Security</strong>
+            <p style="margin: 0; color: #555;">We use industry-standard encryption, regular security audits, and strict access controls to keep your data safe. We continuously update our security practices to protect against emerging threats.</p>
+        </div>
     </section>
 
     <hr>
 
     <section>
-        <h2>Your Rights</h2>
-        <p>You have the right to access, correct, or delete your personal information. You can also opt out of marketing communications at any time. For privacy-related requests, contact us at [insert contact email].</p>
+        <h2><span class="section-number">6</span> Your Rights</h2>
+        <p>You have the right to access, correct, or delete your personal information. You can also opt out of marketing communications at any time. For privacy-related requests, contact us at privacy@vistara.com.</p>
+        
+        <div class="info-highlight">
+            <strong>You're In Control</strong>
+            <p style="margin: 0; color: #555;">You can view, update, or delete your data anytime through your account settings. We respond to all legitimate requests within 30 days.</p>
+        </div>
     </section>
 
     <hr>
 
     <section>
-        <h2>Changes to This Policy</h2>
+        <h2><span class="section-number">7</span> Changes to This Policy</h2>
         <p>We may update this Privacy Policy periodically. Changes will be posted on this page with the date of revision. Your continued use of Vistara constitutes acceptance of any changes.</p>
+        
+        <div class="info-highlight">
+            <strong>Staying Informed</strong>
+            <p style="margin: 0; color: #555;">We'll notify you of significant changes via email or through a prominent notice on our platform. We encourage you to review this policy regularly.</p>
+        </div>
     </section>
+
+    <div class="contact-section">
+        <h3>📧 Have Questions About Your Privacy?</h3>
+        <p>We're here to help. If you have any concerns or questions about how we handle your data, our privacy team is ready to assist you.</p>
+        <a href="mailto:sv8112004@gmail.com" class="contact-btn">Contact Privacy Team</a>
+    </div>
 </div>
