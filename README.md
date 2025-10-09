@@ -34,6 +34,7 @@ Built for both **hosts** and **travelers**, Vistara focuses on simplicity, aesth
 
 ---
 
+
 ## 🧠 Tech Stack <a name="tech-stack"></a>
 
 | Category | Technologies |
