@@ -1,5 +1,5 @@
 <h1 align="center">✨ Vistara — Find Your Perfect Stay ✨</h1>
-
+    
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Live-brightgreen" />
   <img src="https://img.shields.io/badge/Built%20With-Node.js%20%7C%20Express%20%7C%20MongoDB-blue" />
