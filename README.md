@@ -67,6 +67,7 @@ CLOUDINARY_SECRET=your_secret
 MONGO_URI=your_mongodb_url
 SESSION_SECRET=your_session_secret
 
+
 # 4️⃣ Run the app locally
 npm run dev
 
