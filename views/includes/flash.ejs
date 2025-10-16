@@ -1,15 +1,70 @@
-<!-- Success Flash Popup -->
-<% if(success && success.length){ %>   
-<div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+<% if (success && success.length) { %>   
+  <div class="alert alert-success alert-dismissible fade show flash-message text-center shadow-sm" role="alert">
     <%= success %>
-    <button type="button" class="btn-close"data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
- <% } %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
 
- <!-- Error Flash Popup -->
- <% if(error && error.length){ %>   
-<div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+<% if (error && error.length) { %>   
+  <div class="alert alert-danger alert-dismissible fade show flash-message text-center shadow-sm" role="alert">
     <%= error %>
-    <button type="button" class="btn-close"data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
- <% } %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+<script>
+  // Auto close alerts after 2 seconds
+  setTimeout(() => {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
+      alert.classList.remove('show');
+      setTimeout(() => alert.remove(), 500);
+    });
+  }, 3000);
+</script>
+
+<style>.flash-message {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-align: center;
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* centers text vertically */
+}
+
+.flash-message .btn-close {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%); /* perfectly centers the X button vertically */
+  padding: 0.5rem;
+  opacity: 0.7;
+}
+
+.flash-message .btn-close:hover {
+  opacity: 1;
+}
+
+@media (min-width: 992px) {
+  .flash-message {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .flash-message {
+    top: 70px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+</style>
