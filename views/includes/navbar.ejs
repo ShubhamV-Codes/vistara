@@ -15,6 +15,11 @@
 
     <!-- Auth Links (Desktop) -->
     <div class="d-flex align-items-center gap-3">
+      <!-- Search Icon Button -->
+      <button class="search-icon-btn" id="searchBtn" title="Search by location">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
       <div class="auth-links">
         <% if(currUser){ %>
           <div class="user-avatar" onclick="window.location.href='/profile'" style="cursor: pointer;" title="<%= currUser.username %>">
@@ -42,12 +47,35 @@
   </div>
 </nav>
 
+<!-- Search Modal -->
+<div id="searchModal" class="search-modal">
+  <div class="search-modal-content">
+    <span class="search-close">&times;</span>
+    <h2><i class="fa-solid fa-magnifying-glass"></i> Search Listings</h2>
+    <p class="search-subtitle">Find properties by location, city, or country</p>
+    <form action="/listings/search" method="GET">
+      <input 
+        type="text" 
+        name="location" 
+        placeholder="Enter location (e.g., Mumbai, India, Paris...)" 
+        required
+        class="modal-search-input"
+        autocomplete="off"
+      >
+      <button type="submit" class="modal-search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i> Search Properties
+      </button>
+    </form>
+  </div>
+</div>
+
 <!-- Sidebar Overlay -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <!-- Sidebar -->
 <div id="sidebar">
-  <span class="close-btn" id="closeSidebar">&times;</span>
+    
+  <span class="close-btn" id="closeSidebar"></span>
 
   <div class="sidebar-content">
     <a href="/">
@@ -61,6 +89,10 @@
     <a href="/listings/new">
       <i class="fa-solid fa-plus-circle"></i>
       <span>List Your House</span>
+    </a>
+    <a href="#" id="sidebarSearchBtn">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Search by Place</span>
     </a>
     <hr style="margin: 1rem 0; border-color: #ddd;">
 
@@ -122,6 +154,55 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && sidebar.style.width === "300px") {
       closeSidebar();
+    }
+  });
+
+  // Search Modal Functionality
+  const searchBtn = document.getElementById('searchBtn');
+  const sidebarSearchBtn = document.getElementById('sidebarSearchBtn');
+  const searchModal = document.getElementById('searchModal');
+  const searchClose = document.querySelector('.search-close');
+
+  function openSearchModal() {
+    searchModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    // Focus on input after modal opens
+    setTimeout(() => {
+      document.querySelector('.modal-search-input').focus();
+    }, 100);
+  }
+
+  function closeSearchModal() {
+    searchModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', openSearchModal);
+  }
+
+  if (sidebarSearchBtn) {
+    sidebarSearchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeSidebar();
+      setTimeout(openSearchModal, 300);
+    });
+  }
+
+  if (searchClose) {
+    searchClose.addEventListener('click', closeSearchModal);
+  }
+
+  window.addEventListener('click', (e) => {
+    if (e.target === searchModal) {
+      closeSearchModal();
+    }
+  });
+
+  // Close search modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchModal.style.display === 'block') {
+      closeSearchModal();
     }
   });
 

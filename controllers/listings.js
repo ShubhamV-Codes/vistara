@@ -24,6 +24,41 @@ module.exports.index = async (req, res) => {
   res.render('listings/index.ejs', { allListings, category, searchQuery: search || '' });
 };
 
+// Search listings by location (new function)
+module.exports.searchByLocation = async (req, res) => {
+  try {
+    const { location } = req.query;
+    
+    if (!location || location.trim() === "") {
+      req.flash("error", "Please enter a location to search");
+      return res.redirect("/listings");
+    }
+
+    // Search in both location and country fields (case-insensitive)
+    const allListings = await Listing.find({
+      $or: [
+        { location: { $regex: location, $options: 'i' } },
+        { country: { $regex: location, $options: 'i' } }
+      ]
+    }).populate('owner');
+
+    if (allListings.length === 0) {
+      req.flash("error", `No listings found for "${location}"`);
+      return res.redirect("/listings");
+    }
+
+    req.flash("success", `Found ${allListings.length} listing(s) for "${location}"`);
+    res.render("listings/index.ejs", { 
+      allListings, 
+      searchQuery: location,
+      category: null // No category filter when searching by location
+    });
+  } catch (err) {
+    console.error("Search error:", err);
+    req.flash("error", "Something went wrong with the search");
+    res.redirect("/listings");
+  }
+};
 
 // Show a single listing
 module.exports.showListing = async (req, res) => {

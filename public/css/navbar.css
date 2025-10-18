@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 /* ================================
@@ -452,27 +453,41 @@
   border-left-color: #fe424d;
   padding-left: 35px;
 }
+
+/* FIXED CLOSE BUTTON */
 #sidebar .close-btn {
   position: absolute;
   top: 15px;
   right: 20px;
-  font-size: 2rem;
   cursor: pointer;
-  color: #666;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   background: #f8f9fa;
+  border: none;
+  padding: 0;
 }
+
+#sidebar .close-btn::before {
+  content: '×';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  font-size: 2rem;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
 #sidebar .close-btn:hover {
-  color: #fff;
   background: #fe424d;
-  transform: rotate(90deg);
 }
+
+#sidebar .close-btn:hover::before {
+  color: #fff;
+}
+
 .sidebar-overlay {
   display: none;
   position: fixed;
@@ -492,6 +507,181 @@
 }
 
 /* ================================
+   SEARCH ICON BUTTON
+================================ */
+.search-icon-btn {
+  background: transparent;
+  border: 2px solid #fe424d;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fe424d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.search-icon-btn:hover {
+  background: #fe424d;
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+}
+
+.search-icon-btn i {
+  font-size: 1rem;
+}
+
+/* ================================
+   SEARCH MODAL
+================================ */
+.search-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.search-modal-content {
+  background: #fff;
+  margin: 8% auto;
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.4s ease;
+  position: relative;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.search-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #adb5bd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.search-close:hover {
+  color: #fff;
+  background: #fe424d;
+  transform: rotate(90deg);
+}
+
+.search-modal-content h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search-modal-content h2 i {
+  color: #fe424d;
+  font-size: 1.5rem;
+}
+
+.search-subtitle {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.modal-search-input {
+  width: 100%;
+  padding: 1.1rem 1.25rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.modal-search-input:focus {
+  outline: none;
+  border-color: #fe424d;
+  box-shadow: 0 0 0 4px rgba(254, 66, 77, 0.1);
+}
+
+.modal-search-input::placeholder {
+  color: #adb5bd;
+}
+
+.modal-search-btn {
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  background: linear-gradient(135deg, #fe424d 0%, #e63946 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 15px rgba(254, 66, 77, 0.3);
+}
+
+.modal-search-btn:hover {
+  background: linear-gradient(135deg, #e63946 0%, #d32f2f 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(254, 66, 77, 0.4);
+}
+
+.modal-search-btn:active {
+  transform: translateY(0);
+}
+
+.modal-search-btn i {
+  font-size: 1rem;
+}
+
+/* ================================
    RESPONSIVE ADJUSTMENTS
 ================================ */
 @media (max-width: 991px) {
@@ -506,6 +696,20 @@
     min-width: 340px;
     max-width: 92vw;
     right: -10px;
+  }
+  
+  /* Keep search button visible and properly spaced on mobile */
+  .search-icon-btn {
+    display: flex !important;
+    margin-right: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Search modal takes more width on tablets */
+  .search-modal-content {
+    width: 85%;
+    max-width: 500px;
   }
 }
 
@@ -530,6 +734,38 @@
     height: 45px;
     font-size: 1.3rem;
   }
+  
+  /* Proper spacing for mobile buttons */
+  .search-icon-btn {
+    margin-right: 0.5rem;
+  }
+  
+  /* Full width modal on mobile */
+  .search-modal-content {
+    margin: 10% auto;
+    padding: 2rem 1.5rem;
+    width: 92%;
+    max-width: none;
+  }
+  
+  .search-modal-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .search-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .modal-search-input {
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .modal-search-btn {
+    padding: 0.9rem 1.25rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 400px) {
@@ -541,5 +777,70 @@
   }
   .listing-actions button {
     width: 100%;
+  }
+  
+  /* Smaller buttons on very small screens */
+  .search-icon-btn {
+    width: 38px;
+    height: 38px;
+    margin-right: 0.4rem;
+  }
+  
+  .search-icon-btn i {
+    font-size: 0.9rem;
+  }
+  
+  #hamburgerBtn {
+    padding: 0.4rem;
+  }
+  
+  /* Maximum width for very small screens */
+  .search-modal-content {
+    padding: 1.5rem 1.25rem;
+    width: 95%;
+    margin: 15% auto;
+  }
+  
+  .search-modal-content h2 {
+    font-size: 1.35rem;
+    gap: 0.5rem;
+  }
+  
+  .search-modal-content h2 i {
+    font-size: 1.25rem;
+  }
+  
+  .search-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .search-close {
+    width: 32px;
+    height: 32px;
+    font-size: 2rem;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* For very large screens */
+@media (min-width: 1400px) {
+  .search-modal-content {
+    max-width: 600px;
+    padding: 3rem;
+  }
+  
+  .search-modal-content h2 {
+    font-size: 2rem;
+  }
+  
+  .modal-search-input {
+    padding: 1.25rem 1.5rem;
+    font-size: 1.05rem;
+  }
+  
+  .modal-search-btn {
+    padding: 1.25rem 1.75rem;
+    font-size: 1.1rem;
   }
 }

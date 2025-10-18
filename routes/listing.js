@@ -17,6 +17,7 @@ router
 
 
 router.get("/new",isLoggedIn, listingController.renderNewListing );
+router.get("/search",isLoggedIn , listingController.searchByLocation);
 
 router.route("/:id")
 .get( wrapAsync(listingController.showListing))
