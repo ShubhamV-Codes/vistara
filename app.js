@@ -90,8 +90,9 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-    res.render("listings/home");
+  res.render("listings/home", { currUser: req.user || null });
 });
+
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);

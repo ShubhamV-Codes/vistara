@@ -21,7 +21,7 @@
       </button>
 
       <div class="auth-links">
-        <% if(currUser){ %>
+      <% if(typeof currUser !== 'undefined' && currUser){ %>
           <div class="user-avatar" onclick="window.location.href='/profile'" style="cursor: pointer;" title="<%= currUser.username %>">
             <%= currUser.username ? currUser.username.charAt(0).toUpperCase() : 'U' %>
           </div>
