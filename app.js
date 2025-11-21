@@ -27,7 +27,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const profileRoutes = require('./routes/profile');
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust"; // 1
 
 const dbURL = process.env.ATLASDB_URL; 
 main()
@@ -102,7 +102,7 @@ app.use(profileRoutes);
 
 
 app.all(/.*/, (req, res, next) => {
-    next(new ExpressError(404, "Page Not Found"))
+    res.render("./notFound.ejs");
 });
 
 // Error Handler MiddleWare
