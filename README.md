@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://vistara-5oq3.onrender.com/" target="_blank">🌐 Live Website</a> 
+  <a href="https://vistara-lime.vercel.app/" target="_blank">🌐 Live Website</a> 
 </p>
 
 ---
