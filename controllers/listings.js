@@ -15,7 +15,7 @@ module.exports.index = async (req, res) => {
     query.$or = [
       { title: { $regex: search, $options: 'i' } },
       { description: { $regex: search, $options: 'i' } }
-    ];
+    ]; 
   }
 
   const allListings = await Listing.find(query);
