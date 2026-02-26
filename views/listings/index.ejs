@@ -6,12 +6,12 @@
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .filter-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
 
   .filter-scroll {
@@ -52,120 +52,41 @@
 
 <div class="filter-container p-2 mt-3">
   <div class="filter-scroll">
-  
-  <!-- Filter 1 -->
-  <a href="/listings" class="filter text-decoration-none">
-    <i class="fa-solid fa-table-cells"></i>
-    <p>All Listings</p>
-  </a>
+    <a href="/listings" class="filter text-decoration-none">
+      <i class="fa-solid fa-table-cells"></i>
+      <p>All Listings</p>
+    </a>
 
-  <a href="/listings?category=Trending" class="filter text-decoration-none">
-    <i class="fa-solid fa-fire"></i>
-    <p>Trending</p>
-  </a>
+    <a href="/listings?category=Trending" class="filter text-decoration-none">
+      <i class="fa-solid fa-fire"></i>
+      <p>Trending</p>
+    </a>
 
-  <!-- Filter 2 -->
-  <a href="/listings?category=Room" class="filter text-decoration-none">
-    <i class="fa-solid fa-bed"></i>
-    <p>Room</p>
-  </a>
+    <a href="/listings?category=Room" class="filter text-decoration-none">
+      <i class="fa-solid fa-bed"></i>
+      <p>Room</p>
+    </a>
 
-  <!-- Filter 3 -->
-  <a href="/listings?category=Cities" class="filter text-decoration-none">
-    <i class="fa-solid fa-city"></i>
-    <p>Cities</p>
-  </a>
+    <a href="/listings?category=Cities" class="filter text-decoration-none">
+      <i class="fa-solid fa-city"></i>
+      <p>Cities</p>
+    </a>
 
-  <!-- Filter 4 - Hidden on mobile -->
-  <a href="/listings?category=Mountains" class="filter text-decoration-none">
-    <i class="fa-solid fa-mountain-city"></i>
-    <p>Mountains</p>
-  </a>
+    <a href="/listings?category=Mountains" class="filter text-decoration-none">
+      <i class="fa-solid fa-mountain-city"></i>
+      <p>Mountains</p>
+    </a>
 
-  <!-- Filter 5 - Hidden on mobile -->
-  <a href="/listings?category=Castles" class="filter text-decoration-none">
-    <i class="fa-solid fa-building"></i>
-    <p>Castles</p>
-  </a>
-
-  <!-- Filter 6 - Hidden on mobile -->
-  <a href="/listings?category=Pool" class="filter text-decoration-none">
-    <i class="fa-solid fa-person-swimming"></i>
-    <p>Pool</p>
-  </a>
-
-  <!-- Filter 7 - Hidden on mobile -->
-  <a href="/listings?category=Camping" class="filter text-decoration-none">
-    <i class="fa-solid fa-campground"></i>
-    <p>Camping</p>
-  </a>
-
-  <!-- Filter 8 - Hidden on mobile -->
-  <a href="/listings?category=Farms" class="filter text-decoration-none">
-    <i class="fa-solid fa-cow"></i>
-    <p>Farms</p>
-  </a>
-
-  <!-- Filter 9 - Hidden on mobile -->
-  <a href="/listings?category=Skiing" class="filter text-decoration-none">
-    <i class="fa-solid fa-skiing"></i>
-    <p>Skiing</p>
-  </a>
-
-  <!-- Filter 10 - Hidden on mobile -->
-  <a href="/listings?category=Forest" class="filter text-decoration-none">
-    <i class="fa-solid fa-tree"></i>
-    <p>Forest</p>
-  </a>
-
-  <!-- Filter 11 - Hidden on mobile -->
-  <a href="/listings?category=Beach" class="filter text-decoration-none">
-    <i class="fa-solid fa-umbrella-beach"></i>
-    <p>Beach</p>
-  </a>
-
-  <!-- Filter 12 -->
-  <a href="/listings?category=Hiking" class="filter text-decoration-none">
-    <i class="fa-solid fa-mountain"></i>
-    <p>Hiking</p>
-  </a>
-
-  <!-- Extra Filter 1 -->
-  <a href="/listings?category=Spa" class="filter text-decoration-none">
-    <i class="fa-solid fa-hot-tub-person"></i>
-    <p>Spa</p>
-  </a>
-
-  <!-- Extra Filter 2 -->
-  <a href="/listings?category=Arctic" class="filter text-decoration-none">
-    <i class="fa-solid fa-snowflake"></i>
-    <p>Arctic</p>
-  </a>
-
-  <!-- Extra Filter 3 -->
-  <a href="/listings?category=Winery" class="filter text-decoration-none">
-    <i class="fa-solid fa-wine-glass"></i>
-    <p>Winery</p>
-  </a>
-
-  <!-- Extra Filter 4 -->
-  <a href="/listings?category=Boat Trips" class="filter text-decoration-none">
-    <i class="fa-solid fa-ship"></i>
-    <p>Boat Trips</p>
-  </a>
-
-  <!-- Extra Filter 5 -->
-  <a href="/listings?category=Cafe" class="filter text-decoration-none">
-    <i class="fa-solid fa-mug-hot"></i>
-    <p>Cafe</p>
-  </a>
+    <a href="/listings?category=Beach" class="filter text-decoration-none">
+      <i class="fa-solid fa-umbrella-beach"></i>
+      <p>Beach</p>
+    </a>
   </div>
 </div>
 
-<!-- Category filter feedback -->
 <% if (category && category.trim() !== '') { %>
   <div class="container mt-3">
-    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+    <div class="alert alert-secondary alert-dismissible fade show">
       <strong>Category:</strong> <%= category %>
       <a href="/listings" class="btn btn-sm btn-outline-dark ms-2">View All</a>
       <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -173,24 +94,45 @@
   </div>
 <% } %>
 
-<!-- Listings grid -->
-<div class="px-2 mt-4">
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3 mt-3">
-    <% for(let listing of allListings) { %>
-      <a href="/listings/<%= listing._id %>" class="listing-links">
-        <div class="card col listing-card">
-          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height:20rem">
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <div class="listing-title">
-              <b><%= listing.title %></b>
-            </div>
-            <div class="listing-price">
-              <p>₹ <%= listing.price.toLocaleString("en-IN") %> / night</p>
+<div class="container mt-4">
+  <div class="row g-4">
+
+    <% allListings.forEach((listing, index) => { %>
+
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <a href="/listings/<%= listing._id %>" class="listing-links text-decoration-none">
+          <div class="card listing-card h-100 shadow-sm border-0">
+            <img src="<%= listing.image.url %>" 
+                 class="card-img-top" 
+                 alt="listing_image" 
+                 style="height:20rem; object-fit:cover;">
+            <div class="card-body">
+              <div class="listing-title">
+                <b><%= listing.title %></b>
+              </div>
+              <div class="listing-price">
+                ₹ <%= listing.price.toLocaleString("en-IN") %> / night
+              </div>
             </div>
           </div>
+        </a>
+      </div>
+
+      <% if ((index + 1) % 6 === 0) { %>
+        <div class="col-12 my-4 text-center">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4053184614610082"
+               data-ad-slot="4568104117"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         </div>
-      </a>
-    <% } %>
+      <% } %>
+
+    <% }) %>
+
   </div>
 </div>
